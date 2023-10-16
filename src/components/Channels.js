@@ -9,7 +9,9 @@ const random = ['variants', 'plugins'];
 
 const headersList = [
     {
+        //channels
         selections: topics,
+        //category of channels
         headers: 'Topics'
     },
     {
@@ -22,7 +24,6 @@ const headersList = [
     },]
 
 const ChannelBar = (props) => {
-    console.log(props.setChannel);
     return (
         <div className='channel-bar shadow-lg'>
             <ChannelBlock />

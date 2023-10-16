@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ChannelBar from "./Channels";
-import ChatBox from "./ChatBox";
-import Sidebar from "./Sidebar";
+import ChannelBar from "./components/Channels";
+import ChatBox from "./components/ChatBox";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const [channel, setChannel] = useState('')

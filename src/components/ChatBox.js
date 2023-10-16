@@ -1,7 +1,7 @@
-import { TopicSelection } from "./Channels"
-import person from './images/person.jpg'
-import person3 from './images/person3.jpg'
-import person2 from './images/person2.jpg'
+import { TopicSelection } from "../components/Channels"
+import person from '../images/person.jpg'
+import person3 from '../images/person3.jpg'
+import person2 from '../images/person2.jpg'
 
 const ChatBox = ({ current, channel }) => {
     return (
@@ -16,8 +16,8 @@ const ChatBox = ({ current, channel }) => {
 const TopBar = ({ channel }) => {
     return (
         <div className="px-14 w-full h-16 shadow-md flex justify-between items-center">
-            <TopicSelection selection={channel} />
-            <input placeholder="Search" className="pl-2 justify-self-end bg-gray-900 rounded-md w-36 h-8" />
+            {channel && <TopicSelection selection={channel} />}
+            <input placeholder="Search" className="text-white pl-2 justify-self-end bg-gray-900 rounded-md w-36 h-8" />
         </div>
     )
 }

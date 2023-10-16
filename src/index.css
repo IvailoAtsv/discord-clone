@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  behavior: smooth;
+}
+
 @layer components {}
 
 *,
