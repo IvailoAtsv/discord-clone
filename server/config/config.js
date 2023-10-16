@@ -1,0 +1,1 @@
+exports.secret = '89b95444d706fbad8da71444ad2df28a576f7b4eeb89chbd7136fdg318b87d31'

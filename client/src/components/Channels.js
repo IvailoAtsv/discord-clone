@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { BsHash } from 'react-icons/bs';
-import { FaChevronDown, FaChevronRight, FaPlus } from 'react-icons/fa';
+import { FaChevronDown, FaChevronRight, FaHeadphones, FaPlus, FaRegUserCircle } from 'react-icons/fa';
+import { BsFillMicFill } from 'react-icons/bs'
+import { IoMdSettings } from 'react-icons/io'
+
 import uniqid from 'uniqid';
 
 const topics = ['tailwind-css', 'react'];
@@ -25,15 +28,32 @@ const headersList = [
 
 const ChannelBar = (props) => {
     return (
-        <div className='channel-bar shadow-lg'>
+        <div className='w-72 flex flex-col min-h-screen m-0 ml-16 bg-gray-200 dark:bg-gray-800 overflow-hidden shadow-lg'>
             <ChannelBlock />
             <div className='channel-container'>
                 {headersList.map(el =>
                     <Dropdown key={uniqid()} setChannel={props.setChannel} header={el.headers} selections={el.selections} />)}
             </div>
+            <ProfileBar />
         </div>
     );
 };
+
+const ProfileBar = () => {
+    return (
+        <div className='bg-gray-700 flex items-center justify-evenly relative w-full overflow-hidden h-16'>
+            <div className='flex items-center justify-around gap-2'>
+                <FaRegUserCircle size={28} className='text-gray-400 hover:text-white transition-all' />
+                <p className='text-white text-sm'> User</p>
+            </div>
+            <div className='flex text-gray-400 items-center gap-3'>
+                <BsFillMicFill size={18} className='hover:text-white transition-all' />
+                <FaHeadphones size={18} className='hover:text-white transition-all' />
+                <IoMdSettings size={18} className='hover:text-white transition-all' />
+            </div>
+        </div>
+    )
+}
 
 const Dropdown = ({ header, selections, setChannel }) => {
     const [expanded, setExpanded] = useState(true);
