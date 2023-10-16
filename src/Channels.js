@@ -1,25 +1,40 @@
 import { useState } from 'react';
 import { BsHash } from 'react-icons/bs';
 import { FaChevronDown, FaChevronRight, FaPlus } from 'react-icons/fa';
+import uniqid from 'uniqid';
 
 const topics = ['tailwind-css', 'react'];
 const questions = ['jit-compilation', 'purge-files', 'dark-mode'];
 const random = ['variants', 'plugins'];
 
-const ChannelBar = () => {
+const headersList = [
+    {
+        selections: topics,
+        headers: 'Topics'
+    },
+    {
+        selections: questions,
+        headers: 'Questions'
+    },
+    {
+        selections: random,
+        headers: 'Random'
+    },]
+
+const ChannelBar = (props) => {
+    console.log(props.setChannel);
     return (
         <div className='channel-bar shadow-lg'>
             <ChannelBlock />
             <div className='channel-container'>
-                <Dropdown header='Topics' selections={topics} />
-                <Dropdown header='Questions' selections={questions} />
-                <Dropdown header='Random' selections={random} />
+                {headersList.map(el =>
+                    <Dropdown key={uniqid()} setChannel={props.setChannel} header={el.headers} selections={el.selections} />)}
             </div>
         </div>
     );
 };
 
-const Dropdown = ({ header, selections }) => {
+const Dropdown = ({ header, selections, setChannel }) => {
     const [expanded, setExpanded] = useState(true);
 
     return (
@@ -35,7 +50,7 @@ const Dropdown = ({ header, selections }) => {
             </div>
             {expanded &&
                 selections &&
-                selections.map((selection) => <TopicSelection selection={selection} />)}
+                selections.map((selection) => <TopicSelection key={uniqid()} setChannel={setChannel} selection={selection} />)}
         </div>
     );
 };
@@ -49,8 +64,8 @@ const ChevronIcon = ({ expanded }) => {
     );
 };
 
-export const TopicSelection = ({ selection }) => (
-    <div className='dropdown-selection'>
+export const TopicSelection = ({ selection, setChannel }) => (
+    <div className='dropdown-selection' onClick={() => setChannel(selection)}>
         <BsHash size='24' className='text-gray-400' />
         <h5 className='dropdown-selection-text text-white'>{selection}</h5>
     </div>
