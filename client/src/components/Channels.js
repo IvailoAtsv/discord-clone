@@ -28,9 +28,9 @@ const headersList = [
 
 const ChannelBar = (props) => {
     return (
-        <div className='w-72 flex flex-col min-h-screen m-0 ml-16 bg-gray-200 dark:bg-gray-800 overflow-hidden shadow-lg'>
+        <div className='w-72 flex flex-col justify-between min-h-screen m-0 ml-16 bg-gray-200 dark:bg-gray-800 overflow-hidden shadow-lg'>
             <ChannelBlock />
-            <div className='channel-container'>
+            <div className='channel-container mt-16'>
                 {headersList.map(el =>
                     <Dropdown key={uniqid()} setChannel={props.setChannel} header={el.headers} selections={el.selections} />)}
             </div>
@@ -41,10 +41,10 @@ const ChannelBar = (props) => {
 
 const ProfileBar = () => {
     return (
-        <div className='bg-gray-700 flex items-center justify-evenly relative w-full overflow-hidden h-16'>
+        <div className='bg-gray-800 flex items-center justify-evenly relative w-full overflow-hidden h-16'>
             <div className='flex items-center justify-around gap-2'>
                 <FaRegUserCircle size={28} className='text-gray-400 hover:text-white transition-all' />
-                <p className='text-white text-sm'> User</p>
+                <p className='text-white text-sm'>User</p>
             </div>
             <div className='flex text-gray-400 items-center gap-3'>
                 <BsFillMicFill size={18} className='hover:text-white transition-all' />
@@ -93,7 +93,7 @@ export const TopicSelection = ({ selection, setChannel }) => (
 );
 
 const ChannelBlock = () => (
-    <div className='channel-block'>
+    <div className='channel-block absolute top-0'>
         <h5 className='channel-block-text'>Channels</h5>
     </div>
 );
