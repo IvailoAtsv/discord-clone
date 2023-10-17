@@ -5,7 +5,7 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   const [channel, setChannel] = useState('')
-  const [isVisible, setVisible] = useState(true)
+  const [isVisible, setVisible] = useState(false)
 
 
   return (

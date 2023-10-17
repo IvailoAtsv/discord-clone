@@ -20,6 +20,8 @@ export const Profile = ({ isVisible, setVisible }) => {
         let res = activityModes.find(el => e.currentTarget.querySelector('p').innerText === el.message)
         setIcon(res.icon)
 
+        setExpanded(!expanded)
+
     }
 
     const activityModes = [
@@ -38,7 +40,7 @@ export const Profile = ({ isVisible, setVisible }) => {
         }
     ]
     const style = `${expanded ? 'flex' : 'hidden'} flex-col text-white`
-    const mainStyle = `${isVisible ? 'flex' : 'hidden'} w-[300px] flex flex-col justify-between items-center absolute h-[450px] ml-8 rounded-md bottom-0 mb-16 z-50 bg-gray-900 `
+    const mainStyle = `${isVisible ? 'flex' : 'hidden'} w-[350px] flex flex-col justify-between items-center absolute h-[450px] ml-8 rounded-md bottom-0 mb-16 z-50 bg-gray-900 `
     return (
         <>
             <div className={mainStyle}>
@@ -66,7 +68,7 @@ export const Profile = ({ isVisible, setVisible }) => {
                                 handleActivity={handleActivity}
                                 key={uniqid()} icon={el.icon} message={el.message} />)}
                     </div>
-                    <btn className="bg-secondary self-center text-center text-white mt-2 w-10/12 px-2 rounded-md">Log out</btn>
+                    <btn className="bg-secondary absolute bottom-8 self-center text-center text-white mt-2 w-10/12 px-2 rounded-md">Log out</btn>
                 </div>
             </div>
 

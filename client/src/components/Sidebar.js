@@ -7,7 +7,7 @@ import { Profile } from './Profile'
 const Sidebar = ({ isVisible, setVisible }) => {
     return (
         <>
-            <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col
+            <div className="z-50 fixed top-0 left-0 h-screen w-16 m-0 flex flex-col
          bg-primary text-secondary shadow-lg">
                 <SideBarIcon text='Direct messages' icon={<FaDiscord size='28' />} />
                 <span className='w-4/6 h-[1px] self-center bg-gray-600' />
@@ -26,7 +26,7 @@ const SideBarIcon = ({ icon, text = 'tooltip' }) => {
     return (
         <div className="sidebar-icon group">
             {icon}
-            <span className='tooltip group-hover:scale-100 z-50'>
+            <span className='z-50 tooltip group-hover:scale-100 '>
                 {text}
             </span>
         </div>
