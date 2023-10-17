@@ -28,21 +28,21 @@ const headersList = [
 
 const ChannelBar = (props) => {
     return (
-        <div className='w-72 flex flex-col justify-between min-h-screen m-0 ml-16 bg-gray-200 dark:bg-gray-800 overflow-hidden shadow-lg'>
-            <ChannelBlock />
+        <div className='w-72 flex flex-col justify-between min-h-screen m-0 ml-16 bg-gray-200 dark:bg-gray-800 overflow-y-auto shadow-lg'>
+            <ChannelBlock className="z-0" />
             <div className='channel-container mt-16'>
                 {headersList.map(el =>
                     <Dropdown key={uniqid()} setChannel={props.setChannel} header={el.headers} selections={el.selections} />)}
             </div>
-            <ProfileBar />
+            <ProfileBar isVisible={props.isVisible} setVisible={props.setVisible} />
         </div>
     );
 };
 
-const ProfileBar = () => {
+const ProfileBar = ({ setVisible, isVisible }) => {
     return (
         <div className='bg-gray-800 flex items-center justify-evenly relative w-full overflow-hidden h-16'>
-            <div className='flex items-center justify-around gap-2'>
+            <div onClick={() => setVisible(!isVisible)} className='flex items-center justify-around gap-2'>
                 <FaRegUserCircle size={28} className='text-gray-400 hover:text-white transition-all' />
                 <p className='text-white text-sm'>User</p>
             </div>
@@ -76,7 +76,7 @@ const Dropdown = ({ header, selections, setChannel }) => {
     );
 };
 
-const ChevronIcon = ({ expanded }) => {
+export const ChevronIcon = ({ expanded }) => {
     const chevClass = 'text-accent text-opacity-80 my-auto mr-1';
     return expanded ? (
         <FaChevronDown size='14' className={chevClass} />

@@ -5,13 +5,17 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   const [channel, setChannel] = useState('')
+  const [isVisible, setVisible] = useState(true)
+
 
   return (
-    <div className="flex w-screen h-screen bg-primary">
-      <Sidebar channel={channel} setChannel={setChannel} />
-      <ChannelBar channel={channel} setChannel={setChannel} />
-      <ChatBox channel={channel} setChannel={setChannel} />
-    </div>
+    <>
+      <div className="flex w-screen h-screen bg-primary">
+        <Sidebar channel={channel} isVisible={isVisible} setVisible={setVisible} setChannel={setChannel} />
+        <ChannelBar channel={channel} setChannel={setChannel} isVisible={isVisible} setVisible={setVisible} />
+        <ChatBox channel={channel} setChannel={setChannel} />
+      </div>
+    </>
   );
 }
 
